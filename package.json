@@ -8,8 +8,8 @@
     "prettier": "^1.18.2"
   },
   "scripts": {
-    "dev": "node esbuild.js development",
-    "build": "node esbuild.js production"
+    "dev": "node bundler.js development",
+    "build": "node bundler.js production"
   },
   "dependencies": {}
 }
