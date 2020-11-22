@@ -135,6 +135,10 @@ export default class WebGLUtils {
     });
   }
 
+  /**
+   * 前回のrender実行から今回の実行までの時間を返す
+   * @return {number} 前回のレンダリングからの経過時間
+   */
   getDeltaTime() {
     const clock = this.clock;
 
@@ -149,6 +153,26 @@ export default class WebGLUtils {
     clock.oldTime = newTime;
 
     return deltaTime;
+  }
+
+  /**
+   * 主要な WebGL の拡張機能を取得する。
+   * @return {object} 取得した拡張機能
+   * @property {object} elementIndexUint - Uint32 フォーマットを利用できるようにする
+   * @property {object} textureFloat - フロートテクスチャを利用できるようにする
+   * @property {object} textureHalfFloat - ハーフフロートテクスチャを利用できるようにする
+   * @property {object} instancing - インスタンシングを利用できるようにする
+   */
+  getWebGLExtensions() {
+    if (!this.gl) throw new Error('webgl not initialized');
+
+    const gl = this.gl;
+    return {
+      elementIndexUint: gl.getExtension('OES_element_index_uint'),
+      textureFloat: gl.getExtension('OES_texture_float'),
+      textureHalfFloat: gl.getExtension('OES_texture_half_float'),
+      instancing: gl.getExtension('ANGLE_instanced_arrays')
+    };
   }
 
   /**
