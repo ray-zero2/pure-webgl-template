@@ -39,9 +39,9 @@ class Index {
       [-0.5, -0.5, 0.0],
       [0.5, -0.5, 0.0]
     );
-    this.vbo = [utils.createVbo(new Float32Array(this.positions.flat()))];
-    this.attLocation = [gl.getAttribLocation(this.program, 'position')];
-    this.attStride = [this.positions[0].length];
+    this.vbo.push(utils.createVbo(new Float32Array(this.positions.flat())));
+    this.attLocation.push(gl.getAttribLocation(this.program, 'position'));
+    this.attStride.push(this.positions[0].length);
   }
 
   setUniforms() {
